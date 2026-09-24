@@ -2,74 +2,50 @@
 
 ## 1. Purpose
 
-The Segment Anything Model (SAM) was explored during dataset preparation in Roboflow to assess whether AI-assisted segmentation could reduce the manual effort required to annotate road pavement defects.
+The Segment Anything Model (SAM) was explored in Roboflow as an AI-assisted annotation tool for road pavement defects.
 
-SAM was used as an annotation-support tool rather than as the final defect-detection model.
+SAM was used to support the annotation process and was not used as the final defect-detection model.
 
 ## 2. Approaches Explored
 
-Two SAM-assisted annotation approaches were explored during dataset preparation.
+Two SAM-assisted approaches were tested.
 
-### 2.1 Direct SAM-Assisted Segmentation
+### Direct SAM-Assisted Segmentation
 
-SAM was used to assist in identifying the boundary of visible pavement defects and generating segmentation masks.
+SAM was used to generate masks around visible pavement defects.
 
-This approach was useful for defects with relatively clear and distinguishable boundaries. However, the results were less consistent for thin and irregular features, particularly `road_crack`.
+This worked reasonably well when the defect had a clear boundary. However, it was less consistent for thin and irregular features, particularly `road_crack`, where the generated mask did not always follow the intended defect accurately.
 
-Road cracks often have narrow, discontinuous, or irregular shapes and may visually blend with pavement texture, repaired surfaces, joints, shadows, and other linear features. In these situations, the generated mask did not always follow the intended defect region accurately.
+### Bounding Region Followed by SAM
 
-Manual review and adjustment were therefore required.
+A second approach involved first identifying the approximate defect area and then using SAM to generate a more detailed mask within that region.
 
-### 2.2 Bounding Region Followed by SAM Mask Generation
+Providing the approximate location gave better control over the segmentation, although the generated masks still required visual checking and occasional manual correction.
 
-A second approach involved first identifying the approximate defect location using a bounding region and then using SAM assistance to generate a more detailed mask within the selected area.
+## 3. What Helped
 
-Providing the approximate object location gave greater control over the region that SAM was expected to segment.
+SAM worked better when:
 
-This approach was useful for generating more detailed boundaries around some defects, although the resulting masks still required visual verification and occasional manual correction.
+- the approximate defect location was known;
+- the defect had a reasonably clear boundary;
+- a bounding region was used to guide SAM; and
+- the generated annotation was manually reviewed.
 
-## 3. Class Assignment
+## 4. What Did Not Work Well
 
-SAM was used primarily to assist with segmentation of the selected image region.
+The main difficulties were:
 
-The defect classes used in this project:
+- thin and irregular road cracks;
+- defects blending with surrounding pavement texture;
+- ambiguous defect boundaries; and
+- the need for manual correction of some generated masks.
 
-- `pothole`
-- `road_crack`
-- `uneven_manhole`
+SAM was used to assist with selecting the defect region. The final defect class (`pothole`, `road_crack`, or `uneven_manhole`) was assigned and verified separately during annotation.
 
-were assigned and verified during the annotation process.
+## 5. Lesson Learned
 
-Therefore, difficulties encountered during SAM exploration are described as segmentation or boundary-selection issues rather than SAM incorrectly classifying the pavement defect.
+SAM was useful for reducing some manual annotation effort, but human review was still necessary.
 
-## 4. What Helped
+The exploration also resulted in a mixture of bounding boxes, polygons, and masks in the dataset. Since the final YOLOv8 experiment used object detection, the training workflow ultimately relied on bounding-box information.
 
-SAM was most useful when:
-
-- the approximate location of the defect was already known;
-- the defect had a reasonably distinguishable boundary;
-- a bounding region was provided to guide the segmentation process; and
-- the generated mask was subsequently reviewed by the annotator.
-
-The experiment demonstrated that AI-assisted annotation can reduce some of the manual effort required to create detailed object boundaries.
-
-## 5. What Did Not Work Well
-
-The main limitations observed during the exploration were:
-
-- difficulty following thin and irregular road cracks;
-- difficulty separating some defects from surrounding pavement textures;
-- inconsistent boundaries for visually ambiguous pavement deterioration;
-- the need for manual review and correction of generated masks.
-
-Road cracks were particularly challenging because their geometry is often irregular and does not always form a clearly separated object within the image.
-
-## 6. Lesson Learned
-
-The SAM exploration demonstrated that AI-assisted annotation can support and accelerate parts of the dataset-labelling process, but it does not eliminate the need for human quality control.
-
-For this project, SAM was therefore treated as an annotation-assistance tool rather than an autonomous annotation method.
-
-The exploration also contributed to the dataset containing a mixture of bounding boxes, polygons, and masks. Since the final experiment used YOLOv8 for object detection, the training workflow ultimately relied on bounding-box information rather than segmentation masks.
-
-A future iteration could standardize the annotation format and investigate segmentation models for irregular defects such as road cracks.
+For future work, a consistent annotation format should be used, and segmentation could be explored further for irregular defects such as road cracks.
