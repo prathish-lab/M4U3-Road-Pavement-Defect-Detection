@@ -10,16 +10,16 @@ The dataset contains three classes:
 - `road_crack`
 - `uneven_manhole`
 
-Dataset Version 1 contains 252 source images. Following preprocessing and augmentation, the exported dataset used for model training contains 656 images:
+Dataset Version 1 contains 252 source images. Following preprocessing and augmentation, the exported dataset contains 656 images:
 
 - Training: 606 images
 - Validation: 50 images
 
-Five additional road photographs were kept outside the training and validation datasets and used exclusively for unseen-image inference.
+Five additional road photographs taken specifically for this project were kept completely outside the training and validation datasets and used only for unseen-image inference.
 
 ## 2. Data Sources
 
-Images used to develop the dataset were obtained from the following sources:
+Images used to develop the dataset came from three sources.
 
 ### Kaggle Source 1
 
@@ -39,11 +39,11 @@ https://www.kaggle.com/datasets/lorenzoarcioni/road-damage-dataset-potholes-crac
 
 Selected images from this dataset were incorporated into the project dataset.
 
-### Additional Road Photographs
+### Original Project Photographs
 
-Additional road photographs were included to increase the diversity of road conditions represented in the dataset.
+Additional road photographs taken specifically for this project were included to increase the diversity of road conditions represented in the dataset.
 
-Five separate photographs were reserved exclusively for unseen-image inference and were not included in model training or validation.
+Five separate photographs taken specifically for this project were reserved exclusively for unseen-image inference and were not included in training or validation.
 
 ## 3. Roboflow Dataset
 
@@ -51,25 +51,25 @@ The images were curated and annotated in Roboflow using the three project classe
 
 Roboflow Universe Version 1 serves as the annotation and dataset-versioning reference.
 
-The exact dataset export used for model training is preserved as a frozen ZIP file (road_dataset.zip) in the project's GitHub Release (v1.0), enabling the same dataset version to be retrieved for reproducible training.
+The exact dataset export used for model training is preserved as `road_dataset.zip` in GitHub Release `v1.0` to support reproducibility.
 
 ## 4. Licensing
 
-The project dataset combines images originating from different sources. Therefore, the licensing and attribution requirements of the original image sources must be considered separately.
+The project dataset combines images from different sources. The original licensing and attribution requirements of the source images therefore need to be considered separately.
 
-The Roboflow Universe dataset page identifies the published dataset version as **CC BY-NC-SA 4.0**.
+The combined dataset published in Roboflow was assigned **CC BY-NC-SA 4.0** for this project.
 
-This project does not claim ownership of third-party source images, and publication of the project code does not override the licensing conditions associated with the original datasets.
+Images originating from the two Kaggle datasets remain subject to their respective original source licenses and attribution requirements. Original project photographs are separate from these third-party sources.
 
-Before redistribution or reuse of individual images, users should review the applicable license and attribution requirements of the original source.
+The project does not claim ownership of third-party source images, and the project code license does not override the licensing conditions of the original datasets.
 
 ## 5. Project Code and Dataset Rights
 
-Software code, notebooks, model outputs, and dataset images should be treated as separate artifacts for licensing purposes.
+Project code and third-party dataset images are treated separately for licensing purposes.
 
-A software license applied to the project code does not automatically apply to third-party images contained within the dataset.
+A software license applied to the project code does not automatically apply to images originating from third-party datasets.
 
-Only material for which redistribution rights are confirmed should be included in publicly distributed versions of the dataset.
+Detailed licensing information should therefore be checked at the original dataset source before reuse or redistribution.
 
 ## 6. Responsible Reuse
 
@@ -77,6 +77,7 @@ Anyone reusing this project should:
 
 - review the original dataset licenses;
 - preserve required attribution;
-- comply with any non-commercial or share-alike conditions that apply;
-- avoid assuming that a software license grants rights to third-party images;
+- comply with applicable non-commercial or share-alike conditions;
+- distinguish project code from third-party dataset rights; and
 - review road photographs for unnecessary personally identifiable information before redistribution.
+:::
