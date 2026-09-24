@@ -19,7 +19,7 @@ A relatively small and distant pothole was correctly detected with approximately
 Evidence: `results/success_02.jpg`
 
 ### Success 03 – Road Crack
-The model detected visible road-crack regions with confidence values of approximately 0.43 and 0.33. Although the confidence was lower than the stronger pothole and uneven-manhole examples, the detections demonstrate that the model has learned relevant crack-related visual features.
+The model detected visible road-crack regions with confidence values of approximately 0.43 and 0.33. Although the confidence was lower than the stronger pothole and uneven-manhole examples, the road cracks were detected, but at lower confidence than the pothole and uneven-manhole examples.
 
 Evidence: `results/success_03.jpg`
 
@@ -46,7 +46,7 @@ The evidence indicates three recurring limitations:
 
 1. **Missed defects (false negatives):** Some genuine defects are not detected, particularly road cracks and small or distant objects.
 2. **Class confusion:** Irregular pavement damage may be classified as the wrong defect type when visual characteristics overlap.
-3. **Background confusion:** Road markings, pavement joints, repaired surfaces, kerbs, shadows, and other linear or high-contrast features may resemble road cracks and contribute to false-positive detections.
+3. **Background similarity:** Features such as road markings, pavement joints, repaired surfaces, kerbs and shadows can visually resemble road cracks and may contribute to incorrect detections.
 
 ## 5. Iteration Plan
 
@@ -60,12 +60,30 @@ Future model development should focus on the following data improvements:
 
 ## 6. Annotation Limitation
 
-The dataset was initially annotated using a combination of bounding boxes, polygons, and masks. Because the selected YOLOv8 model performs object detection, Ultralytics used bounding-box information and disregarded segmentation information where mixed annotation types were encountered.
+The dataset was annotated using a mixture of bounding boxes, polygons and masks.
 
-A future iteration should standardize the annotation format. Segmentation could also be evaluated for irregular defects such as road cracks, where the defect geometry is not always represented effectively by rectangular bounding boxes.
+During YOLOv8 object-detection training, Ultralytics identified the mixed annotation types and used the bounding-box information while disregarding segmentation information.
 
-## 7. Conclusion
+For future development, the annotation format should be standardized. Segmentation could also be explored for irregular defects such as road cracks.
 
-The prototype demonstrates that YOLOv8 can identify several visible pavement-defect types, but the validation and unseen-image results also show that performance is not yet sufficiently consistent for autonomous road-condition assessment.
+## 7. Environmental and Camera Limitations
 
-The model should therefore be used as an assistive screening tool, with detected and suspected defects verified by qualified personnel before maintenance or safety decisions are made.
+The current model was trained mainly using road images captured under normal daytime conditions. Its performance has not been sufficiently tested under challenging environmental conditions such as:
+
+- night-time or very low-light conditions;
+- rain or wet pavement;
+- strong sunlight, glare, and reflections;
+- heavy or uneven shadows across the road surface;
+- poor visibility or motion blur from a moving camera.
+
+These conditions may change the visual appearance of potholes, cracks and manhole covers and could affect detection accuracy.
+
+Future dataset versions should include more images from different lighting, weather and camera conditions before the model is considered for wider field use.
+
+## 8. Conclusion
+
+The model successfully detected examples from all three defect classes, but the results also show several missed detections and class-confusion cases.
+
+`road_crack` remains the most challenging class and should be the main focus of future dataset improvement.
+
+The model is therefore suitable for preliminary screening and experimentation, with human verification required before maintenance or safety decisions.
