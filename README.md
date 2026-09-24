@@ -30,7 +30,7 @@ The inference notebook uses the trained `best.pt` weights and five unseen road i
 
 ## Dataset
 
-The dataset was prepared and versioned in Roboflow.
+The dataset was assembled from selected public datasets and original road photographs, then prepared and versioned in Roboflow.
 
 - Source images: 252
 - Classes: 3
@@ -100,6 +100,8 @@ Detailed failure analysis is available in [`docs/error_analysis.md`](docs/error_
 **This model is an assistive tool for preliminary screening only. It produces False Negatives. It must NOT be used as the sole verifier for life-safety decisions.**
 
 Model performance can be affected by lighting, shadows, pavement texture, road markings, viewing distance and visually similar road features.
+
+The model was mainly trained using daytime road images and has not been sufficiently tested under conditions such as night-time, rain, wet pavement, strong glare or poor visibility.
 
 Human verification is required before engineering or maintenance decisions are made.
 
