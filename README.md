@@ -113,4 +113,6 @@ Human verification is required before engineering or maintenance decisions are m
 
 ## License
 
-Dataset images may be subject to their original source licenses and attribution requirements. See [`docs/data_sources_and_licenses.md`](docs/data_sources_and_licenses.md) for details.
+Project code and notebooks may be used for educational and research purposes.
+
+Dataset images remain subject to their respective source licenses. See [`docs/data_sources_and_licenses.md`](docs/data_sources_and_licenses.md) for details.
