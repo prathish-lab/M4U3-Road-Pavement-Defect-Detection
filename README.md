@@ -118,3 +118,8 @@ Human verification is required before engineering or maintenance decisions are m
 Project code and notebooks may be used for educational and research purposes.
 
 Dataset images remain subject to their respective source licenses. See [`docs/data_sources_and_licenses.md`](docs/data_sources_and_licenses.md) for details.
+
+## Submission PDF Pack
+
+- [Presentation – 7 Slides](docs/M4U3_Presentation.pdf)
+- [Mini Report – 2 Pages](docs/M4U3_Report.pdf)
