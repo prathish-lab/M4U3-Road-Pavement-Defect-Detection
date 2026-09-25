@@ -70,7 +70,7 @@ The training notebook was successfully tested using **Run All** in Google Colab 
 - **Last successful verification:** September 2026
 - **Ultralytics version:** 8.4.162
 - **Recorded training time:** approximately 4.1 minutes for 30 epochs
-- **Expected end-to-end runtime:** approximately 5–10 minutes using a Tesla T4 GPU; runtime may vary depending on Colab resources and download speed
+- **Expected end-to-end runtime:** approximately 10-15 minutes using a Tesla T4 GPU; runtime may vary depending on Colab resources and download speed
 
 ## Results
 
