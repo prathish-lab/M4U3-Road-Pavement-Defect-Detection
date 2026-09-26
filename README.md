@@ -67,10 +67,10 @@ Preprocessing included Auto-Orient and resizing. Training augmentation included 
 
 The training notebook was successfully tested using **Run All** in Google Colab without requiring any local files.
 
-- **Last successful verification:** 25 September 2026
+- **Last successful verification:** 26 September 2026
 - **Ultralytics version:** 8.4.162
 - **Recorded training time:** approximately 4.1 minutes for 30 epochs
-- **Expected end-to-end runtime:** around 15 minutes using a Tesla T4 GPU; runtime may vary depending on Colab resources and download speed
+- **Expected end-to-end runtime:** around 8 minutes using a Tesla T4 GPU; runtime may vary depending on Colab resources and download speed
 
 ## Results
 
